@@ -9,6 +9,26 @@ export const GetUsersCss = styled.div`
     list-style: none;
     font-family: Andale Mono, monospace;
 }
+.formOrg{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+form{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:400px;
+}
+.submitButton{
+    position:relative;
+    right: 85px;
+}
+.cleanButton{
+    position:relative;
+    left: 85px;
+    bottom: 35px;
+}
 
 input{
     margin: 20px 0 0 0;
@@ -35,7 +55,7 @@ button:hover{
 }
 .tableMembers{
     display:flex;
-    align-itens:center;
+    align-items:center;
     justify-content:center;
 }
 .tableMembers ul{ 
@@ -54,6 +74,10 @@ button:hover{
 }
 
 .tableMembers ul li{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
     border: 1px solid black;
     border-radius: 10px;
     padding: 25px;
@@ -69,7 +93,7 @@ button:hover{
 }
 
 .tableMembers ul li img{
-    margin: 0 0 10px 0;
+    margin: 0 0 20px 0;
     border-radius: 25px;
     width: 200px;
 }

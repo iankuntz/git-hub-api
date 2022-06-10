@@ -9,13 +9,14 @@ const GetUsers = () => {
     const [searchOrg, setSearchOrg] = useState("")
 
 
-    const getMembers = async() => {
-        
+    const getMembers = async(evt) => {
+        evt.preventDefault()
+
         if(searchOrg === ""){
 
             toast.error("Empty input")
         }
-        
+
         const response = await api.request({
             url: `orgs/${searchOrg}/members`,
             method: 'GET',
@@ -50,26 +51,28 @@ const GetUsers = () => {
 
     return(
         <GetUsersCss>
-             
-            <input placeholder="Organization" onChange={(evt) => setSearchOrg(evt.target.value)} value={searchOrg}/>
-            <section className="allButtons">
-                <button onClick={getMembers}>List Members</button>
-                <button onClick={handleClean}>Clean Filter</button>
+            <section className="formOrg">
+             <form onSubmit={getMembers}>
+                <input placeholder="Organization" onChange={(evt) => setSearchOrg(evt.target.value)} value={searchOrg}/>
+                <button className="submitButton" type="submit">List Members</button>
+             </form>
+                <button className="cleanButton" onClick={handleClean}>Clean Filter</button>
             </section>
+        
 
-        <section className="tableMembers">
-            <ul>
-                {members.map((item, index) => (
-                    
-                    <li key={`${index}_li`}>
-                    <img src={item.avatar_url} alt="avatar" key={`${index}_img`}></img>
-                    <p key={`${index}_p1`}>Login: {item.login}</p>
-                    <p key={`${index}_p2`}>ID: {item.id}</p>
-                    <a href={item.html_url} key={`${index}_a1`}>Visit Profile</a>
-                </li>
-        ))}
-            </ul>
-        </section>
+            <section className="tableMembers">
+                <ul>
+                    {members.map((item, index) => (
+                        
+                        <li key={`${index}_li`}>
+                        <img src={item.avatar_url} alt="avatar" key={`${index}_img`}></img>
+                        <p key={`${index}_p1`}>Login: {item.login}</p>
+                        <p key={`${index}_p2`}>ID: {item.id}</p>
+                        <a href={item.html_url} key={`${index}_a1`}>Visit Profile</a>
+                    </li>
+            ))}
+                </ul>
+            </section>
         
         </GetUsersCss>
     )
