@@ -21,15 +21,14 @@ form{
     width:400px;
 }
 .submitButton{
-    position:relative;
+    position: relative;
     right: 85px;
 }
 .cleanButton{
-    position:relative;
+    position: relative;
     left: 85px;
     bottom: 35px;
 }
-
 input{
     margin: 20px 0 0 0;
     text-align: center;
